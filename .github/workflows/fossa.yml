@@ -1,0 +1,15 @@
+- name: FOSSA 
+  uses: fossas/fossa-action@v1.6.0
+
+  jobs:
+    fossa-scan:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - uses: fossas/fossa-action@main # Use a specific version if locking is preferred
+          with:
+            api-key: ${{secrets.FOSSA_API_KEY}}
+            run-tests: true
+            generate-report: html
+        - run: echo '${{ steps.fossa.outputs.report }}' > report.html
+
