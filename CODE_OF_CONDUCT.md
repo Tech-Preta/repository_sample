@@ -1,7 +1,7 @@
 
 # Código de Conduta de Colaboração
 
-## Meu compromisso c
+## Meu compromisso
 
 Como participante, colaboradora e líder de comunidade, me comprometo a fazer com que a participação em meus projetos seja uma experiência livre de assédio para todas as pessoas, independentemente de idade, tamanho do corpo, deficiência aparente ou não aparente, etnia, características sexuais, identidade ou expressão de gênero, nível de experiência, educação, situação sócio-econômica, nacionalidade, aparência pessoal, raça, casta, religião ou identidade e orientação sexuais.
 
