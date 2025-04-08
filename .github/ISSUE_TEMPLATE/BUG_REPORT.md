@@ -3,7 +3,7 @@ name: Bug Report
 about: Crie um relatório para nos ajudar a melhorar
 title: "[BUG]"
 labels: bug
-assignees: 'nataliagranato'
+assignees: nataliagranato
 
 ---
 
