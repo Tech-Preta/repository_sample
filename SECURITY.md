@@ -41,6 +41,6 @@ Este projeto segue as seguintes práticas:
 - GitHub Advanced Security
 - Dependabot
 - CodeQL Analysis
-- Snyk
-- FOSSA
 - Scorecard Supply-Chain Security
+- Trivy
+- Checkov
