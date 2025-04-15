@@ -12,8 +12,10 @@ on:
       - synchronize
       - reopened  
   workflow_dispatch: 
+
 permissions:
-  contents: read  
+  contents: read
+  security-events: write # Permissão necessária para upload de SARIF
 
 jobs:
   checkov-scan:
@@ -40,7 +42,7 @@ jobs:
             --quiet
 
       - name: Upload SARIF results
-        uses: github/codeql-action/upload-sarif@v3 # Updated to v3
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: checkov-results.sarif
 
