@@ -1,4 +1,4 @@
-name: Checkov Security Scan (All Frameworks)
+name: Checkov Security Scan
 on:
   push:
     branches: [ main ]
@@ -13,15 +13,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Checkov (All Frameworks)
-        uses: bridgecrew/checkov-action@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          directory: ./
-          quiet: false
+          python-version: '3.10'
 
-      - name: Run Checkov with SARIF
-        run: checkov -d ./ -o sarif --output-file checkov.sarif
-      - name: Upload SARIF
+      - name: Install Checkov
+        run: pip install checkov
+
+      # Passo 2: Executar Checkov com output SARIF
+      - name: Run Checkov and generate SARIF report
+        run: |
+          checkov -d ./ \
+            -o sarif \
+            --output-file checkov-results.sarif \
+            --quiet
+
+      - name: Upload SARIF results
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: checkov.sarif
+          sarif_file: checkov-results.sarif
+
+      - name: Show Checkov results (verbose)
+        run: checkov -d ./
