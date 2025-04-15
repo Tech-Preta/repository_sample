@@ -16,8 +16,8 @@ jobs:
       - name: Run Checkov (All Frameworks)
         uses: bridgecrew/checkov-action@v3
         with:
-          directory: ./   
-          quiet: false 
+          directory: ./
+          quiet: false
 
       - name: Run Checkov with SARIF
         run: checkov -d ./ -o sarif --output-file checkov.sarif
