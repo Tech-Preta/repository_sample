@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - develop 
     tags:
       - 'v*'    
   pull_request:
@@ -32,7 +31,7 @@ jobs:
       - name: Install Checkov
         run: pip install checkov
 
-      # Passo 2: Executar Checkov com output SARIF
+      # Run Checkov with SARIF output
       - name: Run Checkov and generate SARIF report
         run: |
           checkov -d ./ \
@@ -41,7 +40,7 @@ jobs:
             --quiet
 
       - name: Upload SARIF results
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3 # Updated to v3
         with:
           sarif_file: checkov-results.sarif
 
