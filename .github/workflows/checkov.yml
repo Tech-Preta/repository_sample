@@ -1,0 +1,27 @@
+name: Checkov Security Scan (All Frameworks)
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  checkov-scan:
+    name: Checkov Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Checkov (All Frameworks)
+        uses: bridgecrew/checkov-action@v3
+        with:
+          directory: ./
+          quiet: false
+
+      - name: Run Checkov with SARIF
+        run: checkov -d ./ -o sarif --output-file checkov.sarif
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: checkov.sarif
